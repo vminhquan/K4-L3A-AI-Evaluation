@@ -48,6 +48,17 @@ cp .env.example .env                                     # điền OPENAI_API_KE
 
 Chi tiết hướng dẫn theo hệ điều hành và xử lý lỗi: xem [`guide_lab.md`](guide_lab.md).
 
+### Demo giao diện
+
+Repo có thêm demo Streamlit tiếng Việt cho trợ lý RAG OrbitTech và bàn đánh giá. Chatbot truy vấn model OpenAI thật; câu hỏi tiếng Việt được chuyển thành cụm từ tiếng Anh để tìm trong tài liệu, sau đó câu trả lời được tạo bằng tiếng Việt. Nút LLM Judge gọi model thật để chấm câu trả lời theo rubric. Tab Đánh giá đọc artifact sẵn có hoặc chạy lại 20 câu trong phiên hiện tại; benchmark giữ đầu ra tiếng Anh để so sánh với golden dataset và không ghi đè artifact trong `artifacts/`.
+
+```bash
+python -m pip install -r requirements.txt
+streamlit run streamlit_app.py --server.address 127.0.0.1
+```
+
+Đặt `OPENAI_API_KEY` và `OPENAI_MODEL` trong `.env` theo `.env.example` trước khi dùng các chức năng gọi model. Key chỉ được đọc phía server Python, không được gửi về trình duyệt.
+
 ---
 
 ## Mục tiêu
